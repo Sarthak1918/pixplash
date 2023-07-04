@@ -1,6 +1,7 @@
-import React, { useState } from 'react'
+import React from 'react'
 import "../styles/Header.css"
 import searchImage from "./search.png"
+import logo from "../pixplash-logo.png"
 
 function Header({setSearchTerm}) {
     
@@ -8,7 +9,8 @@ function Header({setSearchTerm}) {
     return (
         <div className='header'>
             <div className='container'>
-                <h1>The best free stock photos, royalty free images & videos shared by creators.</h1>
+            <img class="logo" src={logo} alt="logo" />
+                <h1>Unleash Your Creative Vision with Pixplash,Where Images Come to Life!</h1>
                 <form className='search' onSubmit={(e)=>{
                     e.preventDefault();
                     setSearchTerm(e.target[0].value)
