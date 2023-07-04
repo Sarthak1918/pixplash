@@ -7,6 +7,7 @@
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
+    cursor: pointer;
     
 }
 
@@ -52,9 +53,17 @@
 }
 
 .download-btn {
+    background-color: #ffff;
     padding: 8px;
     padding-inline: 10px;
     border: none;
     outline: none;
     border-radius: 10px;
+    cursor: pointer;
+    transition: 0.1s;
+    
+}
+.download-btn:hover{
+    background-color: #e1e0e0;
+    
 }

@@ -13,6 +13,7 @@ function App() {
   const[photos,setPhotos] = useState([])
   const[searchPhotos,setSearchPhotos] = useState([])
   const [searchTerm,setSearchTerm] = useState("");
+  const [selectedImage,setSelectedImage] = useState(null)
 
   function searchGetter(current) {
     const apiURL = `https://api.pexels.com/v1/search?query=${searchTerm}&page=${current}&per_page=${perPage}`;
@@ -61,6 +62,10 @@ function App() {
     }).catch((err) => console.error(err))
   }
 
+  useEffect(()=>{
+    window.document.body.style.overflow = selectedImage?"hidden":""
+  },[selectedImage])
+
   return (
     <div className="App">
       <Header images={photos} perPage={perPage} setSearchTerm={setSearchTerm}/>
@@ -70,7 +75,7 @@ function App() {
         hasMore={true} //aur load karna hai ya nahi
         loader={<div className='loadingClass' key={0}><LoadSVG size={50} duration={1200} /></div>}
       >
-        <Images images={photos}/>
+        <Images images={photos} setSelectedImage={setSelectedImage} />
       </InfiniteScroll>}
 
       {searchTerm && <InfiniteScroll
@@ -79,11 +84,11 @@ function App() {
         hasMore={true} //aur load karna hai ya nahi
         loader={<div className='loadingClass' key={0}><LoadSVG size={50} duration={1200} /></div>}
       >
-        <Images images={searchPhotos}/>
+        <Images images={searchPhotos} setSelectedImage={setSelectedImage}/>
       </InfiniteScroll>
       }
 
-      <LightBox />
+      {selectedImage && <LightBox selectedImage={selectedImage} setSelectedImage={setSelectedImage}/>}
 
       
     </div>
