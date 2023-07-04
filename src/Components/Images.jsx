@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React from 'react'
 import Image from './Image'
 import '../styles/Images.css'
 
